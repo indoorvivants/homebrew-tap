@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["*"]
+
+env: 
+  JAVA_OPTS: "-Xmx4G"
+  JVM_OPTS: "-Xmx4G"
+  SBT_OPTS: "-Xmx4G"
+
+jobs:
+  macos_build:
+    name: MacOS 
+    strategy:
+      fail-fast: true
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+
+      - run: brew install ./sn-bindgen.rb && brew test sn-bindgen
+
