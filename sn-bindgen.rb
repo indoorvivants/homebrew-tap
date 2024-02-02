@@ -2,7 +2,7 @@ class SnBindgen < Formula
   desc "Scala 3 Native binding generator for C libraries"
   homepage "https://sn-bindgen.indoorvivants.com"
 
-  _version = "0.0.22"
+  _version = "0.0.24"
 
   version  "#{_version}"
 
