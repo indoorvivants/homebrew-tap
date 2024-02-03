@@ -2,7 +2,7 @@ class SnBindgen < Formula
   desc "Scala 3 Native binding generator for C libraries"
   homepage "https://sn-bindgen.indoorvivants.com"
 
-  _version = "0.0.24"
+  _version = "0.1.0"
 
   version  "#{_version}"
 
@@ -12,7 +12,7 @@ class SnBindgen < Formula
     depends_on "sbt" => :build
   end
 
-  depends_on "llvm@14"
+  depends_on "llvm@17"
 
   resource "binary" do
     on_arm do
@@ -40,7 +40,7 @@ class SnBindgen < Formula
   def install
     if build.head? 
       ENV["SCALANATIVE_MODE"] = "release-fast"
-      ENV["LLVM_BIN"] = Formula["llvm@14"].opt_bin
+      ENV["LLVM_BIN"] = Formula["llvm@17"].opt_bin
 
       system "sbt", "buildBinary sn-bindgen"
 
