@@ -5,14 +5,14 @@ on:
   pull_request:
     branches: ["*"]
 
-env: 
+env:
   JAVA_OPTS: "-Xmx4G"
   JVM_OPTS: "-Xmx4G"
   SBT_OPTS: "-Xmx4G"
 
 jobs:
   macos_build:
-    name: MacOS 
+    name: MacOS
     strategy:
       fail-fast: true
       matrix:
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
 
       - run: brew install ./sn-bindgen.rb && brew test sn-bindgen
-
+      - run: brew install ./sniper.rb && brew test sniper
