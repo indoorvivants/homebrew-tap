@@ -1,15 +1,15 @@
 class Sniper < Formula
   desc "Snippet manager"
-  homepage "https://github.com/keynmol/sniper"
+  homepage "https://github.com/indoorvivants/sniper"
 
-  _version = "0.0.2"
+  _version = "0.0.5"
 
   version  "#{_version}"
 
-  url "https://github.com/keynmol/sniper/archive/refs/tags/v#{_version}.tar.gz"
+  url "https://github.com/indoorvivants/sniper/archive/refs/tags/v#{_version}.tar.gz"
 
   head do
-    depends_on "sbt" => :build
+    depends_on "Virtuslab/scala-cli/scala-cli"
     depends_on "llvm@17"
   end
 
@@ -23,21 +23,21 @@ class Sniper < Formula
   resource "binary" do
     on_arm do
       on_macos do
-        url "https://github.com/keynmol/sniper/releases/download/v#{_version}/sniper-aarch64-apple-darwin"
+        url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-aarch64-apple-darwin"
         # sha256 checksums["darwin-arm64"]
       end
       on_linux do
-        url "https://github.com/keynmol/sniper/releases/download/v#{_version}/sniper-aarch64-pc-linux"
+        url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-aarch64-pc-linux"
         # sha256 checksums["linux-arm64"]
       end
     end
     on_intel do
       on_macos do
-        url "https://github.com/keynmol/sniper/releases/download/v#{_version}/sniper-x86_64-apple-darwin"
+        url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-x86_64-apple-darwin"
         # sha256 checksums["darwin-amd64"]
       end
       on_linux do
-        url "https://github.com/keynmol/sniper/releases/download/v#{_version}/sniper-x86_64-pc-linux"
+        url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-x86_64-pc-linux"
         # sha256 checksums["linux-amd64"]
       end
     end
@@ -45,12 +45,9 @@ class Sniper < Formula
 
   def install
     if build.head?
-      # ENV["SCALANATIVE_MODE"] = "release-fast"
-      # ENV["LLVM_BIN"] = Formula["llvm@17"].opt_bin
+      system "make", "bin"
 
-      # system "sbt", "buildBinary sn-bindgen"
-
-      # cp "bin/sn-bindgen", buildpath / "sn-bindgen"
+      cp "out/release/sniper", buildpath / "sniper"
     else
       cp resource("binary").cached_download, buildpath / "sniper"
     end
