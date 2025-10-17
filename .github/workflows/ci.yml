@@ -9,6 +9,7 @@ env:
   JAVA_OPTS: "-Xmx4G"
   JVM_OPTS: "-Xmx4G"
   SBT_OPTS: "-Xmx4G"
+  HOMEBREW_DEVELOPER: 1
 
 jobs:
   macos_build:

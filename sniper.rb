@@ -15,7 +15,7 @@ class Sniper < Formula
 
   checksums = {
     "darwin-amd64" => "13c71f480e68454ecbe1fb461efc1599caa00ef59311293d543b783f7b988dc2",
-    "darwin-arm64" => "2ed399657158d7b4904d9612176dcbd12f7f68e81229ffe4be3a1d0bdc237941",
+    "darwin-arm64" => "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "linux-amd64" => "97085c830992fde6ad9140e7e1c4cda3e6aa46a9456ee4a5886934e819afb55d",
     "linux-arm64" => "61d0850aeade8ccc858cdd2c871f9e76025ae51f569fe5363d3d2e7674b1ba2a"
   }
@@ -24,7 +24,7 @@ class Sniper < Formula
     on_arm do
       on_macos do
         url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-aarch64-apple-darwin"
-        # sha256 checksums["darwin-arm64"]
+        sha256 checksums["darwin-arm64"]
       end
       on_linux do
         url "https://github.com/indoorvivants/sniper/releases/download/v#{_version}/sniper-aarch64-pc-linux"
