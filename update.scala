@@ -8,7 +8,10 @@ import java.nio.file.Path
 import sttp.model.Uri
 import rendition.*
 
-case class CLI(file: Path) derives CommandApplication
+case class CLI(
+    @Positional("file")
+    files: List[Path]
+) derives CommandApplication
 
 case class Asset(name: String, digest: Option[String]) derives ReadWriter
 case class ReleaseData(tag_name: String, assets: List[Asset]) derives ReadWriter
@@ -54,44 +57,45 @@ def readMetadata(lines: IndexedSeq[String]) =
 
 @main def hello(args: String*) =
   val cmd = CommandApplication.parseOrExit[CLI](args)
-  val path = os.Path(cmd.file, os.pwd)
-  val meta = readMetadata(os.read.lines(path))
+  cmd.files.foreach: file =>
+    val path = os.Path(file, os.pwd)
+    val meta = readMetadata(os.read.lines(path))
 
-  val releases =
-    read[List[ReleaseData]](
-      quickRequest
-        .header("Accept", "application/vnd.github+json")
-        .header("X-GitHub-Api-Version", "2022-11-28")
-        .get(
-          Uri.unsafeParse(s"https://api.github.com/repos/${meta.repo}/releases")
-        )
-        .response(asStringOrFail)
-        .send()
-        .body
+    val releases =
+      read[List[ReleaseData]](
+        quickRequest
+          .header("Accept", "application/vnd.github+json")
+          .header("X-GitHub-Api-Version", "2022-11-28")
+          .get(
+            Uri.unsafeParse(
+              s"https://api.github.com/repos/${meta.repo}/releases"
+            )
+          )
+          .response(asStringOrFail)
+          .send()
+          .body
+      )
+
+    val release = releases.find(_.tag_name == "v" + meta.version).get
+
+    val assetsMap = release.assets.map(ass => ass.name -> ass.digest).toMap
+
+    val binaries =
+      for
+        arch <- List("aarch64", "x86_64")
+        os <- List("apple-darwin", "pc-linux")
+        binary = s"${meta.binary}-$arch-$os"
+        asset <- assetsMap.get(binary)
+      yield Binary(binary = binary, token = s"$arch-$os", digest = asset)
+
+    os.write.over(
+      path,
+      replaceSection(
+        os.read.lines(path),
+        "DOWNLOAD_URLS",
+        generateDownloadUrls(meta, binaries)
+      ).mkString("\n")
     )
-
-  println(releases)
-
-  val release = releases.find(_.tag_name == "v" + meta.version).get
-
-  val assetsMap = release.assets.map(ass => ass.name -> ass.digest).toMap
-
-  val binaries =
-    for
-      arch <- List("aarch64", "x86_64")
-      os <- List("apple-darwin", "pc-linux")
-      binary = s"${meta.binary}-$arch-$os"
-      asset <- assetsMap.get(binary)
-    yield Binary(binary = binary, token = s"$arch-$os", digest = asset)
-
-  os.write.over(
-    path,
-    replaceSection(
-      os.read.lines(path),
-      "DOWNLOAD_URLS",
-      generateDownloadUrls(meta, binaries)
-    ).mkString("\n")
-  )
 
 case class Binary(binary: String, token: String, digest: Option[String])
 
