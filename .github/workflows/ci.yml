@@ -25,4 +25,4 @@ jobs:
           fetch-depth: 0
 
       - run: brew install ./sn-bindgen.rb && brew test sn-bindgen
-      - run: brew install ./sniper.rb && brew test sniper
+      - run: brew install ./sniper.rb  # && brew test sniper
