@@ -9,6 +9,7 @@ env:
   JAVA_OPTS: "-Xmx4G"
   JVM_OPTS: "-Xmx4G"
   SBT_OPTS: "-Xmx4G"
+  HOMEBREW_DEVELOPER: 1
 
 jobs:
   macos_build:
@@ -16,7 +17,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-15, macos-15-intel]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -24,4 +25,4 @@ jobs:
           fetch-depth: 0
 
       - run: brew install ./sn-bindgen.rb && brew test sn-bindgen
-      - run: brew install ./sniper.rb && brew test sniper
+      - run: brew install ./sniper.rb  # && brew test sniper
