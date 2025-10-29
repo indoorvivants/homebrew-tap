@@ -1,4 +1,4 @@
-//> using dep com.indoorvivants::decline-derive::0.3.2
+//> using dep com.indoorvivants::decline-derive::0.3.3
 //> using dep com.indoorvivants::rendition::0.0.4
 //> using toolkit default
 
@@ -80,6 +80,7 @@ def readMetadata(lines: IndexedSeq[String]) =
 
     val assetsMap = release.assets.map(ass => ass.name -> ass.digest).toMap
 
+
     val binaries =
       for
         arch <- List("aarch64", "x86_64")
@@ -87,6 +88,8 @@ def readMetadata(lines: IndexedSeq[String]) =
         binary = s"${meta.binary}-$arch-$os"
         asset <- assetsMap.get(binary)
       yield Binary(binary = binary, token = s"$arch-$os", digest = asset)
+
+    if binaries.isEmpty then sys.error("No binaries found!")
 
     os.write.over(
       path,
