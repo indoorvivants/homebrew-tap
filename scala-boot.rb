@@ -65,6 +65,6 @@ class ScalaBoot < Formula
   end
 
   test do
-    system "#{bin}/scala-boot", "go", "indoorvivants/smithy4s-fullstack.g8"
+    system "#{bin}/scala-boot", "go", "indoorvivants/smithy4s-fullstack.g8", "-y"
   end
 end
