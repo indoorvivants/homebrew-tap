@@ -3,7 +3,7 @@ class SnBindgen < Formula
   homepage "https://sn-bindgen.indoorvivants.com"
 
   # GENERATED: METADATA START
-  _version = "0.3.1"
+  _version = "0.4.1"
   _repo = "indoorvivants/sn-bindgen"
   _bin_name = "sn-bindgen"
   # GENERATED: METADATA END
@@ -20,29 +20,29 @@ class SnBindgen < Formula
 
 # GENERATED: DOWNLOAD_URLS START
   _checksums = {
-    "aarch64-apple-darwin" => "f6ab16ec4109235f7cf12a69352312e2ab98d1fab303b3c57fef8b6e28cbcd35",
-  "aarch64-pc-linux" => "7bedb79e4d600d1e106b0ed7011a851dc6a154a7f95563bd2c9a6d06d8c6aef1",
-  "x86_64-apple-darwin" => "4615f23c82e8d4090f0974e65479b9043a8d85fea03293aa36d332928d945595",
-  "x86_64-pc-linux" => "c7f5fc75015a3873edc2b859d78b50221abfb39f151d1782d22aae71d6e7b863"
+    "aarch64-apple-darwin" => "5f4bad4a20f4145ffe5a38840b2b543395ec59be374d62d35466c0549b34872c",
+  "aarch64-pc-linux" => "b9c6f4e78ca086562068483185d0996e602aa883b19bec2caca56908d1a7685e",
+  "x86_64-apple-darwin" => "45fa15109b857d16a4a1991abce6251486a11fcc44170253aa83a6dbea17e162",
+  "x86_64-pc-linux" => "98382a8a165932f90803446ee68cc9539202357c804e3b33e715a41a5e64bcd5"
   }
   resource "binary" do
     on_arm do
       on_linux do
-        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.3.1/sn-bindgen-aarch64-pc-linux"
+        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.4.1/sn-bindgen-aarch64-pc-linux"
          sha256 _checksums["aarch64-pc-linux"]
       end
       on_macos do
-        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.3.1/sn-bindgen-aarch64-apple-darwin"
+        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.4.1/sn-bindgen-aarch64-apple-darwin"
          sha256 _checksums["aarch64-apple-darwin"]
       end
     end
     on_intel do
       on_linux do
-        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.3.1/sn-bindgen-x86_64-pc-linux"
+        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.4.1/sn-bindgen-x86_64-pc-linux"
          sha256 _checksums["x86_64-pc-linux"]
       end
       on_macos do
-        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.3.1/sn-bindgen-x86_64-apple-darwin"
+        url "https://github.com/indoorvivants/sn-bindgen/releases/download/v0.4.1/sn-bindgen-x86_64-apple-darwin"
          sha256 _checksums["x86_64-apple-darwin"]
       end
     end
