@@ -32,3 +32,4 @@ jobs:
       - run: brew install ./sn-bindgen.rb && brew test sn-bindgen
       - run: brew install ./sniper.rb  # && brew test sniper
       - run: brew install ./scala-boot.rb  && brew test scala-boot
+      - run: brew install ./sn-sizemap.rb  && brew test sn-sizemap
