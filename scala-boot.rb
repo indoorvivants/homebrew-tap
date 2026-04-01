@@ -10,7 +10,7 @@ class ScalaBoot < Formula
 
   version  "#{_version}"
 
-  url "https://github.com/indoorvivants/sniper/archive/refs/tags/v#{_version}.tar.gz"
+  url "https://github.com/indoorvivants/scala-boot/archive/refs/tags/v#{_version}.tar.gz"
 
   head do
     depends_on "sbt" => :build

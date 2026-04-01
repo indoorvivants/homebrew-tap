@@ -1,6 +1,6 @@
-//> using dep com.indoorvivants::decline-derive::0.3.3
+//> using dep com.indoorvivants::decline-derive::0.3.6
 //> using dep com.indoorvivants::rendition::0.0.4
-//> using toolkit default
+//> using toolkit 0.9.1
 
 import sttp.client4.quick.*, upickle.default.*
 import decline_derive.*
