@@ -3,7 +3,7 @@ class Sniper < Formula
   homepage "https://github.com/indoorvivants/sniper"
 
   # GENERATED: METADATA START
-  _version = "0.0.7"
+  _version = "0.0.9"
   _repo = "indoorvivants/sniper"
   _bin_name = "sniper"
   # GENERATED: METADATA END
@@ -19,29 +19,29 @@ class Sniper < Formula
 
 # GENERATED: DOWNLOAD_URLS START
   _checksums = {
-    "aarch64-apple-darwin" => "d5b6cfcbcd3817e3f4c1a5fdf32118852eb427661729bd841d9936d40c2eac20",
-  "aarch64-pc-linux" => "eebdf843a5b5e7a392fdfa43d2d4ef1a6fbb4073933503c07e9855c14a3b5204",
-  "x86_64-apple-darwin" => "825bf033656c6df7243322d4e595e5b97bb45807fc475d376355a7e5989e30b8",
-  "x86_64-pc-linux" => "23115852b3c53319196846157807add2121501529af43e5d2339b9536e7f1aa7"
+    "aarch64-apple-darwin" => "111c49e47095e8cfba401311d86624cbec075869c7b9701dc58dbede8837a1a0",
+  "aarch64-pc-linux" => "4c5881177d8fd4b1a96cdfe022bdefd0bcf1bc0e6193e0f3bef99075c8e0bffe",
+  "x86_64-apple-darwin" => "4a688f5c7bec2bec9e84141a52274d8593525c7e57599ad33f455ce9ec7aa322",
+  "x86_64-pc-linux" => "5bd1fa3c6dbce0eda2111266124c43501a9dfb240e24370a324db091027a0db9"
   }
   resource "binary" do
     on_arm do
       on_linux do
-        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.7/sniper-aarch64-pc-linux"
+        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.9/sniper-aarch64-pc-linux"
          sha256 _checksums["aarch64-pc-linux"]
       end
       on_macos do
-        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.7/sniper-aarch64-apple-darwin"
+        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.9/sniper-aarch64-apple-darwin"
          sha256 _checksums["aarch64-apple-darwin"]
       end
     end
     on_intel do
       on_linux do
-        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.7/sniper-x86_64-pc-linux"
+        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.9/sniper-x86_64-pc-linux"
          sha256 _checksums["x86_64-pc-linux"]
       end
       on_macos do
-        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.7/sniper-x86_64-apple-darwin"
+        url "https://github.com/indoorvivants/sniper/releases/download/v0.0.9/sniper-x86_64-apple-darwin"
          sha256 _checksums["x86_64-apple-darwin"]
       end
     end
