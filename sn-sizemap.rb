@@ -1,6 +1,6 @@
 
 class SnSizemap < Formula
-  desc "Scala Boot - start your projects from templates"
+  desc "sizemap – visualise the size of your binary"
   homepage "https://github.com/indoorvivants/sn-sizemap"
 
   # GENERATED: METADATA START

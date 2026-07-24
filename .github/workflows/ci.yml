@@ -33,3 +33,4 @@ jobs:
       - run: brew install ./sniper.rb  # && brew test sniper
       - run: brew install ./scala-boot.rb  && brew test scala-boot
       - run: brew install ./sn-sizemap.rb  && brew test sn-sizemap
+      - run: brew install ./llvm-ir-lsp.rb
